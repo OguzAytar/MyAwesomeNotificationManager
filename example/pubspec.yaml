@@ -1,0 +1,26 @@
+name: notification_manager_example
+description: A Flutter example app demonstrating Awesome Notification Manager usage
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Awesome Notifications
+  awesome_notifications: ^0.9.3+1
+
+  # Local package
+  ogzawesomenotificationmanager:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
