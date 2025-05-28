@@ -5,9 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:ogzawesomenotificationmanager/src/core/base/base_notification_handler.dart';
 import 'package:ogzawesomenotificationmanager/src/presentation/controllers/notification_controller.dart';
 
-/// Global Navigator Key
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
 /// Main Notification Service class
 class NotificationService {
   static final Map<String, BaseNotificationHandler> _handlers = {};

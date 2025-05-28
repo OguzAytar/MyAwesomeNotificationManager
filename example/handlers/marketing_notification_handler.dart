@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ogzawesomenotificationmanager/ogzawesomenotificationmanager.dart';
 
+import '../app/main.dart';
+
 /// Marketing notification handler
 class MarketingNotificationHandler extends BaseNotificationHandler {
   @override
