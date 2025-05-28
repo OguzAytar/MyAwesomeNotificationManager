@@ -1,5 +1,4 @@
-import 'package:ogzawesomenotificationmanager/src/data/models/received_action_model.dart';
-import 'package:ogzawesomenotificationmanager/src/data/models/received_notification_model.dart';
+import 'package:ogzawesomenotificationmanager/ogzawesomenotificationmanager.dart';
 
 /// Base notification handler abstract class
 abstract class BaseNotificationHandler {

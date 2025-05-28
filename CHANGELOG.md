@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.0.2
+
+### New Features
+
+* **Custom Schedule API:**
+  - `NotificationScheduleModel` hierarchy (Interval, Calendar, Cron, ExactDate)
+  - `NotificationScheduleConverter` with helper methods
+  - Abstracted awesome_notifications dependency from public API
+  - Easy-to-use schedule builders (afterMinutes, dailyAt, weeklyAt, etc.)
+
+* **Enhanced Examples:**
+  - Complete schedule examples in `/example/schedule_examples.dart`
+  - Updated main example app with new schedule API
+  - Comprehensive schedule use cases and patterns
+
+* **Documentation:**
+  - Updated README.md with schedule API documentation
+  - Enhanced quick guide with schedule reference
+  - Added schedule-specific examples and best practices
+
+### Breaking Changes
+
+* `createScheduledNotification` now uses `NotificationScheduleModel` instead of `NotificationSchedule`
+* Removed direct awesome_notifications types from public interface
+
 ## 0.0.1
 
 ### Initial Release

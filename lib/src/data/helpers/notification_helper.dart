@@ -1,6 +1,9 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:ogzawesomenotificationmanager/src/core/interfaces/i_notification_service_helper.dart';
 
+import '../models/notification_schedule_model.dart';
+import 'notification_schedule_converter.dart';
+
 /// Notification Helper implementation
 class NotificationHelper implements INotificationServiceHelper {
   static const String _defaultChannelKey = 'default_notification';
@@ -23,13 +26,16 @@ class NotificationHelper implements INotificationServiceHelper {
     required int id,
     required String title,
     required String body,
-    required NotificationSchedule schedule,
+    required NotificationScheduleModel schedule,
     Map<String, String?>? payload,
     String? channelKey,
   }) async {
+    // Convert our schedule model to AwesomeNotifications schedule
+    final awesomeSchedule = NotificationScheduleConverter.convertToAwesome(schedule);
+
     await AwesomeNotifications().createNotification(
       content: NotificationContent(id: id, channelKey: channelKey ?? _defaultChannelKey, title: title, body: body, payload: payload),
-      schedule: schedule,
+      schedule: awesomeSchedule,
     );
   }
 

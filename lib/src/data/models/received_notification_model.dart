@@ -41,6 +41,6 @@ class ReceivedNotificationModel {
 
   @override
   String toString() {
-    return 'TReceivedNotificationModel(channelKey: $channelKey, id: $id, title: $title, body: $body, payload: $payload)';
+    return 'ReceivedNotificationModel(channelKey: $channelKey, id: $id, title: $title, body: $body, payload: $payload)';
   }
 }

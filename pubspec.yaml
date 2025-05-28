@@ -1,6 +1,6 @@
 name: ogzawesomenotificationmanager
 description: "A Flutter package for managing AwesomeNotifications with layered architecture."
-version: 0.0.1
+version: 0.0.2
 homepage:
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  awesome_notifications: ^0.9.3+1
+  awesome_notifications: ^0.10.1
 
 dev_dependencies:
   flutter_test:

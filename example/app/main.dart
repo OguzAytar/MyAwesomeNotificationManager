@@ -345,16 +345,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _sendScheduledNotification() async {
+    // Yeni schedule model kullanarak 10 saniye sonra bildirim gönder
+    final exactSchedule = NotificationScheduleConverter.createInterval(
+      seconds: 10,
+      preciseAlarm: true,
+    );
+
     await _helper.createScheduledNotification(
       id: _notificationId++,
       title: '⏰ Zamanlanmış Bildirim',
       body: 'Bu bildirim 10 saniye sonra gelecek!',
       channelKey: 'example_channel',
-      schedule: NotificationInterval(
-        interval: 10, // 10 saniye
-        timeZone: await AwesomeNotifications().getLocalTimeZoneIdentifier(),
-        preciseAlarm: true,
-      ),
+      schedule: exactSchedule,
       payload: {
         'type': 'scheduled',
         'scheduled_time': DateTime.now().add(const Duration(seconds: 10)).toIso8601String(),

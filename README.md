@@ -111,6 +111,129 @@ await helper.createNotificationWithActions(
     ),
   ],
 );
+
+// Zamanlanmış bildirim - Yeni Schedule API
+await helper.createScheduledNotification(
+  id: 3,
+  title: '⏰ Zamanlanmış Bildirim',
+  body: 'Bu bildirim 10 saniye sonra gelecek',
+  channelKey: 'general_channel',
+  schedule: NotificationScheduleConverter.createInterval(seconds: 10),
+  payload: {'type': 'scheduled'},
+);
+```
+
+## ⏰ Zamanlanmış Bildirimler - Yeni Schedule API
+
+Bu paket, awesome_notifications bağımlılığını gizlemek için kendi schedule modellerini kullanır:
+
+### Basit Zaman Aralıkları
+
+```dart
+// 30 saniye sonra
+final schedule1 = NotificationScheduleConverter.createInterval(seconds: 30);
+
+// 5 dakika sonra (helper metod)
+final schedule2 = NotificationScheduleConverter.afterMinutes(5);
+
+// 2 saat sonra (helper metod)
+final schedule3 = NotificationScheduleConverter.afterHours(2);
+
+// 3 gün sonra (helper metod)
+final schedule4 = NotificationScheduleConverter.afterDays(3);
+```
+
+### Belirli Tarih ve Saat
+
+```dart
+// Yarın saat 09:00'da
+final tomorrow9AM = DateTime.now().add(Duration(days: 1))
+    .copyWith(hour: 9, minute: 0, second: 0);
+
+final schedule = NotificationScheduleConverter.createExactDate(
+  dateTime: tomorrow9AM,
+  preciseAlarm: true,
+);
+```
+
+### Tekrar Eden Bildirimler
+
+```dart
+// Her gün saat 08:00'da
+final dailySchedule = NotificationScheduleConverter.dailyAt(
+  hour: 8, 
+  minute: 0,
+);
+
+// Her Pazartesi saat 09:00'da
+final weeklySchedule = NotificationScheduleConverter.weeklyAt(
+  weekday: 1, // 1 = Pazartesi
+  hour: 9,
+  minute: 0,
+);
+
+// Her ayın 15'inde saat 12:00'da
+final monthlySchedule = NotificationScheduleConverter.monthlyAt(
+  day: 15,
+  hour: 12,
+  minute: 0,
+);
+```
+
+### Gelişmiş Takvim Tabanlı
+
+```dart
+// Her Cuma saat 17:00'da
+final fridaySchedule = NotificationScheduleConverter.createCalendar(
+  weekday: 5, // Cuma
+  hour: 17,
+  minute: 0,
+  repeats: true,
+);
+
+// 2025 yılının Aralık ayında
+final yearEndSchedule = NotificationScheduleConverter.createCalendar(
+  year: 2025,
+  month: 12,
+  day: 25,
+  hour: 9,
+  minute: 0,
+);
+```
+
+### Cron Tabanlı (Sadece Android)
+
+```dart
+// Her gün saat 14:30'da
+final cronSchedule = NotificationScheduleConverter.createCron(
+  cronExpression: '0 30 14 * * ?',
+  preciseAlarm: true,
+);
+
+// Her Pazartesi, Çarşamba, Cuma saat 08:00'da
+final workdaysSchedule = NotificationScheduleConverter.createCron(
+  cronExpression: '0 0 8 * * MON,WED,FRI',
+  preciseAlarm: true,
+);
+```
+
+### Zamanlanmış Bildirim Gönderme
+
+```dart
+final helper = NotificationHelper();
+
+// Schedule oluştur
+final schedule = NotificationScheduleConverter.afterMinutes(30);
+
+// Bildirim gönder
+await helper.createScheduledNotification(
+  id: 100,
+  title: '⏰ 30 Dakika Sonra',
+  body: 'Bu bildirim 30 dakika gecikmeyle gönderildi',
+  channelKey: 'general_channel',
+  schedule: schedule,
+  payload: {'type': 'delayed', 'minutes': '30'},
+);
 ```
 
 ## 📱 Tam Örnek Uygulama

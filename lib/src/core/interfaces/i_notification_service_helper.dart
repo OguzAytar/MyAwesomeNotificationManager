@@ -1,4 +1,4 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
+import '../../data/models/notification_schedule_model.dart';
 
 /// Notification Service Helper Interface
 abstract class INotificationServiceHelper {
@@ -10,7 +10,7 @@ abstract class INotificationServiceHelper {
     required int id,
     required String title,
     required String body,
-    required NotificationSchedule schedule,
+    required NotificationScheduleModel schedule,
     Map<String, String?>? payload,
     String? channelKey,
   });

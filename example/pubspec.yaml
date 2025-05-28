@@ -11,9 +11,9 @@ dependencies:
     sdk: flutter
 
   # Awesome Notifications
-  awesome_notifications: ^0.9.3+1
+  awesome_notifications: ^0.10.1
 
-  # Local package
+  # Local package for development (this will be published package in production)
   ogzawesomenotificationmanager:
     path: ../
 

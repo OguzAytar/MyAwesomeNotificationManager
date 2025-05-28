@@ -4,6 +4,9 @@ import 'package:ogzawesomenotificationmanager/ogzawesomenotificationmanager.dart
 
 import 'handlers/marketing_notification_handler.dart';
 
+// Global navigator key for navigation from notification handlers
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 /// Example notification handler implementation
 class ExampleNotificationHandler extends BaseNotificationHandler {
   @override

@@ -123,11 +123,7 @@ class NotificationManagerExample {
       title: 'Scheduled Notification',
       body: 'This notification was scheduled',
       channelKey: 'example_channel',
-      schedule: NotificationInterval(
-        interval: 60, // 60 seconds from now
-        timeZone: await AwesomeNotifications().getLocalTimeZoneIdentifier(),
-        preciseAlarm: true,
-      ),
+      schedule: NotificationScheduleConverter.afterMinutes(1),
       payload: {'type': 'scheduled'},
     );
   }

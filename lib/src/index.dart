@@ -4,6 +4,8 @@
 export 'core/base/base_notification_handler.dart';
 export 'core/interfaces/i_notification_service_helper.dart';
 export 'data/helpers/notification_helper.dart';
+export 'data/helpers/notification_schedule_converter.dart';
+export 'data/models/notification_schedule_model.dart';
 // Data exports
 export 'data/models/received_action_model.dart';
 export 'data/models/received_notification_model.dart';

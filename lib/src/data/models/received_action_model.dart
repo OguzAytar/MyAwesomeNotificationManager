@@ -38,6 +38,6 @@ class ReceivedActionModel {
 
   @override
   String toString() {
-    return 'TReceivedActionModel(channelKey: $channelKey, id: $id, title: $title, body: $body, payload: $payload)';
+    return 'ReceivedActionModel(channelKey: $channelKey, id: $id, title: $title, body: $body, payload: $payload)';
   }
 }
