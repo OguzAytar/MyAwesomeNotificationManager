@@ -72,6 +72,17 @@ class NotificationHelper implements INotificationServiceHelper {
     await createNotification(id: id, title: title, body: body, payload: payload, channelKey: channelKey);
   }
 
+  /// Check if notifications are allowed
+  Future<bool> isNotificationAllowed() async {
+    // Check if notifications are allowed
+    final isAllowed = await AwesomeNotifications().isNotificationAllowed();
+    if (!isAllowed) {
+      // Request permission if not allowed
+      await AwesomeNotifications().requestPermissionToSendNotifications();
+    }
+    return isAllowed;
+  }
+
   /// Create notification with action buttons
   Future<void> createNotificationWithActions({
     required int id,
