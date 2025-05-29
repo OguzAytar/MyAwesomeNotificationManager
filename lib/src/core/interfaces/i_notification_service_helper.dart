@@ -23,4 +23,10 @@ abstract class INotificationServiceHelper {
 
   /// Update notification
   Future<void> updateNotification({required int id, required String title, required String body, Map<String, String?>? payload, String? channelKey});
+
+  /// Cancel all notifications for a specific channel
+  Future<void> cancelChannelNotifications(String channelKey);
+
+  /// Cancel all notifications for a specific group
+  Future<void> cancelGroupNotifications(String groupKey);
 }

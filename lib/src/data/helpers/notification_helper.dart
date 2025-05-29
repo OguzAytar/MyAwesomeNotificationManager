@@ -50,6 +50,16 @@ class NotificationHelper implements INotificationServiceHelper {
   }
 
   @override
+  Future<void> cancelChannelNotifications(String channelKey) async {
+    await AwesomeNotifications().cancelNotificationsByChannelKey(channelKey);
+  }
+
+  @override
+  Future<void> cancelGroupNotifications(String groupKey) {
+    return AwesomeNotifications().cancelNotificationsByGroupKey(groupKey);
+  }
+
+  @override
   Future<void> updateNotification({
     required int id,
     required String title,
