@@ -83,6 +83,11 @@ class NotificationHelper implements INotificationServiceHelper {
     return isAllowed;
   }
 
+  Future<void> requestPermissionToSendNotifications() async {
+    // Request permission to send notifications
+    await AwesomeNotifications().requestPermissionToSendNotifications();
+  }
+
   /// Create notification with action buttons
   Future<void> createNotificationWithActions({
     required int id,
