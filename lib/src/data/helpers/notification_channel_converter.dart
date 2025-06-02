@@ -1,5 +1,7 @@
 import 'dart:typed_data';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
+
 import '../models/notification_channel_model.dart';
 
 /// Converts our custom channel models to AwesomeNotifications models
@@ -24,9 +26,7 @@ class NotificationChannelConverter {
       defaultPrivacy: _convertPrivacy(channelModel.defaultPrivacy),
       groupKey: channelModel.groupKey,
       groupSort: _convertGroupSort(channelModel.groupSort),
-      vibrationPattern: channelModel.vibrationPattern != null 
-          ? Int64List.fromList(channelModel.vibrationPattern!) 
-          : null,
+      vibrationPattern: channelModel.vibrationPattern != null ? Int64List.fromList(channelModel.vibrationPattern!) : null,
       ledColor: channelModel.ledColor,
       ledOnMs: channelModel.ledOnMs,
       ledOffMs: channelModel.ledOffMs,
@@ -35,10 +35,7 @@ class NotificationChannelConverter {
 
   /// Convert our channel group model to AwesomeNotifications channel group
   static NotificationChannelGroup convertChannelGroup(NotificationChannelGroupModel groupModel) {
-    return NotificationChannelGroup(
-      channelGroupKey: groupModel.channelGroupKey,
-      channelGroupName: groupModel.channelGroupName,
-    );
+    return NotificationChannelGroup(channelGroupKey: groupModel.channelGroupKey, channelGroupName: groupModel.channelGroupName);
   }
 
   /// Convert our action button model to AwesomeNotifications action button
@@ -73,9 +70,7 @@ class NotificationChannelConverter {
       bigPicture: contentModel.bigPicture,
       color: contentModel.color,
       backgroundColor: contentModel.backgroundColor,
-      notificationLayout: contentModel.notificationLayout != null 
-          ? _convertLayout(contentModel.notificationLayout!) 
-          : NotificationLayout.Default,
+      notificationLayout: contentModel.notificationLayout != null ? _convertLayout(contentModel.notificationLayout!) : NotificationLayout.Default,
       progress: contentModel.progress?.toDouble(),
       locked: contentModel.locked ?? false,
       ticker: contentModel.ticker,
@@ -163,7 +158,7 @@ class NotificationChannelConverter {
     }
   }
 
-  /// Convert group sort (if needed) 
+  /// Convert group sort (if needed)
   static GroupSort? _convertGroupSort(String? groupSort) {
     if (groupSort == null) return null;
     switch (groupSort.toLowerCase()) {

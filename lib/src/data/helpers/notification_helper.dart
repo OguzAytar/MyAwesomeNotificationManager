@@ -1,10 +1,10 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:ogzawesomenotificationmanager/src/core/interfaces/i_notification_service_helper.dart';
 
-import '../models/notification_schedule_model.dart';
 import '../models/notification_channel_model.dart';
-import 'notification_schedule_converter.dart';
+import '../models/notification_schedule_model.dart';
 import 'notification_channel_converter.dart';
+import 'notification_schedule_converter.dart';
 
 /// Notification Helper implementation
 class NotificationHelper implements INotificationServiceHelper {
@@ -101,7 +101,7 @@ class NotificationHelper implements INotificationServiceHelper {
   }) async {
     // Convert our action button models to awesome_notifications models
     final awesomeActionButtons = NotificationChannelConverter.convertActionButtons(actionButtons);
-    
+
     await AwesomeNotifications().createNotification(
       content: NotificationContent(id: id, channelKey: channelKey ?? _defaultChannelKey, title: title, body: body, payload: payload),
       actionButtons: awesomeActionButtons,

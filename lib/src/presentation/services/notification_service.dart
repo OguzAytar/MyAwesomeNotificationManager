@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:ogzawesomenotificationmanager/src/core/base/base_notification_handler.dart';
-import 'package:ogzawesomenotificationmanager/src/data/models/notification_channel_model.dart';
 import 'package:ogzawesomenotificationmanager/src/data/helpers/notification_channel_converter.dart';
+import 'package:ogzawesomenotificationmanager/src/data/models/notification_channel_model.dart';
 import 'package:ogzawesomenotificationmanager/src/presentation/controllers/notification_controller.dart';
 
 /// Main Notification Service class

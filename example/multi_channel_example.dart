@@ -211,10 +211,10 @@ class MultiChannelNotificationExample {
   }) async {
     // Not: Kanallar initialization sırasında eklenmeli
     // Bu metod sadece runtime'da yeni handler eklemek için kullanılabilir
-    
+
     // Handler'ı ekle
     NotificationService.addHandler(channelKey, handler);
-    
+
     debugPrint('New handler added for channel: $channelKey');
   }
 }

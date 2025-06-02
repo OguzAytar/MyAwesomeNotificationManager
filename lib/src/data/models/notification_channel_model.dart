@@ -64,11 +64,7 @@ class NotificationChannelGroupModel {
   final String channelGroupName;
   final String? channelGroupDescription;
 
-  const NotificationChannelGroupModel({
-    required this.channelGroupKey,
-    required this.channelGroupName,
-    this.channelGroupDescription,
-  });
+  const NotificationChannelGroupModel({required this.channelGroupKey, required this.channelGroupName, this.channelGroupDescription});
 
   @override
   String toString() {
@@ -77,14 +73,7 @@ class NotificationChannelGroupModel {
 }
 
 /// Custom notification importance enum
-enum NotificationImportanceModel {
-  none,
-  min,
-  low,
-  default_,
-  high,
-  max,
-}
+enum NotificationImportanceModel { none, min, low, default_, high, max }
 
 /// Custom notification action button model
 class NotificationActionButtonModel {
@@ -117,28 +106,10 @@ class NotificationActionButtonModel {
 }
 
 /// Custom action type enum
-enum ActionTypeModel {
-  defaultAction,
-  silentAction,
-  silentBackgroundAction,
-  keepOnTop,
-  inputField,
-  disabledAction,
-}
+enum ActionTypeModel { defaultAction, silentAction, silentBackgroundAction, keepOnTop, inputField, disabledAction }
 
 /// Custom notification layout enum
-enum NotificationLayoutModel {
-  default_,
-  bigPicture,
-  bigText,
-  inbox,
-  messaging,
-  messagingGroup,
-  mediaPlayer,
-  decoration,
-  progressBar,
-  custom,
-}
+enum NotificationLayoutModel { default_, bigPicture, bigText, inbox, messaging, messagingGroup, mediaPlayer, decoration, progressBar, custom }
 
 /// Custom notification content model
 class NotificationContentModel {
