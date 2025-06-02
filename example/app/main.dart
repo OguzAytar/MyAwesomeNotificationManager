@@ -1,4 +1,3 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:ogzawesomenotificationmanager/ogzawesomenotificationmanager.dart';
 
@@ -310,15 +309,15 @@ class _HomeScreenState extends State<HomeScreen> {
       body: 'Bu bildirimde butonlar var!',
       channelKey: 'example_channel',
       actionButtons: [
-        NotificationActionButton(
+        NotificationActionButtonModel(
           key: 'accept',
           label: '✅ Kabul Et',
-          actionType: ActionType.SilentAction,
+          actionType: ActionTypeModel.silentAction,
         ),
-        NotificationActionButton(
+        NotificationActionButtonModel(
           key: 'decline',
           label: '❌ Reddet',
-          actionType: ActionType.SilentAction,
+          actionType: ActionTypeModel.silentAction,
         ),
       ],
       payload: {

@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:ogzawesomenotificationmanager/src/core/base/base_notification_handler.dart';
+import 'package:ogzawesomenotificationmanager/src/data/models/notification_channel_model.dart';
+import 'package:ogzawesomenotificationmanager/src/data/helpers/notification_channel_converter.dart';
 import 'package:ogzawesomenotificationmanager/src/presentation/controllers/notification_controller.dart';
 
 /// Main Notification Service class
@@ -15,8 +17,8 @@ class NotificationService {
   /// Initialize notifications with custom handlers, channels and channel groups
   static Future<void> initializeNotifications(
     Map<String, BaseNotificationHandler> handlers, {
-    List<NotificationChannelGroup> channelGroups = const [],
-    List<NotificationChannel> channels = const [],
+    List<NotificationChannelGroupModel> channelGroups = const [],
+    List<NotificationChannelModel> channels = const [],
     String? defaultIcon,
     bool debug = false,
   }) async {
@@ -28,7 +30,7 @@ class NotificationService {
     // Default channels if none provided
     final defaultChannels = channels.isEmpty
         ? [
-            NotificationChannel(
+            NotificationChannelModel(
               channelGroupKey: 'default_notification_group',
               channelKey: 'default_notification',
               channelName: 'Default Notifications',
@@ -36,7 +38,7 @@ class NotificationService {
               defaultColor: Colors.blue,
               enableLights: true,
               enableVibration: true,
-              importance: NotificationImportance.High,
+              importance: NotificationImportanceModel.high,
               playSound: true,
             ),
           ]
@@ -44,13 +46,17 @@ class NotificationService {
 
     // Default channel groups if none provided
     final defaultChannelGroups = channelGroups.isEmpty
-        ? [NotificationChannelGroup(channelGroupKey: 'default_notification_group', channelGroupName: 'Default Notifications')]
+        ? [NotificationChannelGroupModel(channelGroupKey: 'default_notification_group', channelGroupName: 'Default Notifications')]
         : channelGroups;
+
+    // Convert our models to awesome_notifications models
+    final awesomeChannels = NotificationChannelConverter.convertChannels(defaultChannels);
+    final awesomeChannelGroups = NotificationChannelConverter.convertChannelGroups(defaultChannelGroups);
 
     await AwesomeNotifications().initialize(
       defaultIcon ?? 'resource://drawable/ic_launcher',
-      defaultChannels,
-      channelGroups: defaultChannelGroups,
+      awesomeChannels,
+      channelGroups: awesomeChannelGroups,
       debug: debug,
     );
 

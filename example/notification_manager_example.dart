@@ -1,4 +1,3 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:ogzawesomenotificationmanager/ogzawesomenotificationmanager.dart';
 
@@ -49,23 +48,23 @@ class NotificationManagerExample {
   static Future<void> initialize() async {
     // Define custom channels
     final channels = [
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'example_group',
         channelKey: 'example_channel',
         channelName: 'Example Notifications',
         channelDescription: 'Example notification channel',
         defaultColor: Colors.blue,
-        importance: NotificationImportance.High,
+        importance: NotificationImportanceModel.high,
         playSound: true,
         enableVibration: true,
       ),
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'alerts_group',
         channelKey: 'alerts_channel',
         channelName: 'Alert Notifications',
         channelDescription: 'Important alert notifications',
         defaultColor: Colors.red,
-        importance: NotificationImportance.Max,
+        importance: NotificationImportanceModel.max,
         playSound: true,
         enableVibration: true,
       ),
@@ -73,8 +72,8 @@ class NotificationManagerExample {
 
     // Define channel groups
     final channelGroups = [
-      NotificationChannelGroup(channelGroupKey: 'example_group', channelGroupName: 'Example Group'),
-      NotificationChannelGroup(channelGroupKey: 'alerts_group', channelGroupName: 'Alerts Group'),
+      NotificationChannelGroupModel(channelGroupKey: 'example_group', channelGroupName: 'Example Group'),
+      NotificationChannelGroupModel(channelGroupKey: 'alerts_group', channelGroupName: 'Alerts Group'),
     ];
 
     // Define handlers for each channel
@@ -112,8 +111,8 @@ class NotificationManagerExample {
       body: 'This notification has action buttons',
       channelKey: 'example_channel',
       actionButtons: [
-        NotificationActionButton(key: 'accept', label: 'Accept', actionType: ActionType.SilentAction),
-        NotificationActionButton(key: 'decline', label: 'Decline', actionType: ActionType.SilentAction),
+        NotificationActionButtonModel(key: 'accept', label: 'Accept', actionType: ActionTypeModel.silentAction),
+        NotificationActionButtonModel(key: 'decline', label: 'Decline', actionType: ActionTypeModel.silentAction),
       ],
       payload: {'type': 'action_notification'},
     );

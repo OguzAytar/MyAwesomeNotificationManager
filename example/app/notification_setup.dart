@@ -1,4 +1,3 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:ogzawesomenotificationmanager/ogzawesomenotificationmanager.dart';
 
@@ -11,52 +10,52 @@ class NotificationSetup {
     // Kanalları tanımla
     final channels = [
       // Genel kanal
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'general_group',
         channelKey: 'example_channel',
         channelName: '📱 Genel Bildirimler',
         channelDescription: 'Genel uygulama bildirimleri',
         defaultColor: Colors.blue,
-        importance: NotificationImportance.High,
+        importance: NotificationImportanceModel.high,
         playSound: true,
         enableVibration: true,
         enableLights: true,
       ),
 
       // Marketing kanalı
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'marketing_group',
         channelKey: 'marketing_channel',
         channelName: '🎯 Kampanya Bildirimleri',
         channelDescription: 'Özel kampanya ve promosyon bildirimleri',
         defaultColor: Colors.purple,
-        importance: NotificationImportance.High,
+        importance: NotificationImportanceModel.high,
         playSound: true,
         enableVibration: true,
         enableLights: true,
       ),
 
       // Sistem kanalı
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'system_group',
         channelKey: 'system_channel',
         channelName: '🔒 Sistem Bildirimleri',
         channelDescription: 'Sistem güncellemeleri ve uyarıları',
         defaultColor: Colors.red,
-        importance: NotificationImportance.Max,
+        importance: NotificationImportanceModel.max,
         playSound: true,
         enableVibration: true,
         enableLights: true,
       ),
 
       // Sessiz kanal
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'background_group',
         channelKey: 'silent_channel',
         channelName: '🔇 Arka Plan Bildirimleri',
         channelDescription: 'Sessiz arka plan bildirimleri',
         defaultColor: Colors.grey,
-        importance: NotificationImportance.Low,
+        importance: NotificationImportanceModel.low,
         playSound: false,
         enableVibration: false,
         enableLights: false,
@@ -65,19 +64,19 @@ class NotificationSetup {
 
     // Kanal gruplarını tanımla
     final channelGroups = [
-      NotificationChannelGroup(
+      NotificationChannelGroupModel(
         channelGroupKey: 'general_group',
         channelGroupName: '📱 Genel',
       ),
-      NotificationChannelGroup(
+      NotificationChannelGroupModel(
         channelGroupKey: 'marketing_group',
         channelGroupName: '🎯 Kampanyalar',
       ),
-      NotificationChannelGroup(
+      NotificationChannelGroupModel(
         channelGroupKey: 'system_group',
         channelGroupName: '🔒 Sistem',
       ),
-      NotificationChannelGroup(
+      NotificationChannelGroupModel(
         channelGroupKey: 'background_group',
         channelGroupName: '🔇 Arka Plan',
       ),

@@ -1,4 +1,3 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:ogzawesomenotificationmanager/ogzawesomenotificationmanager.dart';
 
@@ -48,50 +47,50 @@ class MultiChannelNotificationExample {
     // Define multiple channels for different purposes
     final channels = [
       // Genel bildirimler
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'general_group',
         channelKey: 'general_channel',
         channelName: 'Genel Bildirimler',
         channelDescription: 'Genel uygulama bildirimleri',
         defaultColor: Colors.blue,
-        importance: NotificationImportance.High,
+        importance: NotificationImportanceModel.high,
         playSound: true,
         enableVibration: true,
       ),
 
       // Marketing/Kampanya bildirimleri
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'marketing_group',
         channelKey: 'marketing_channel',
         channelName: 'Kampanya Bildirimleri',
         channelDescription: 'Özel kampanya ve promosyon bildirimleri',
         defaultColor: Colors.orange,
-        importance: NotificationImportance.High,
+        importance: NotificationImportanceModel.high,
         playSound: true,
         enableVibration: true,
         soundSource: 'resource://raw/marketing_sound', // Özel ses
       ),
 
       // Sistem bildirimleri
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'system_group',
         channelKey: 'system_channel',
         channelName: 'Sistem Bildirimleri',
         channelDescription: 'Sistem güncellemeleri ve uyarıları',
         defaultColor: Colors.red,
-        importance: NotificationImportance.Max,
+        importance: NotificationImportanceModel.max,
         playSound: true,
         enableVibration: true,
       ),
 
       // Sessiz bildirimler
-      NotificationChannel(
+      NotificationChannelModel(
         channelGroupKey: 'silent_group',
         channelKey: 'silent_channel',
         channelName: 'Sessiz Bildirimler',
         channelDescription: 'Sessiz arka plan bildirimleri',
         defaultColor: Colors.grey,
-        importance: NotificationImportance.Low,
+        importance: NotificationImportanceModel.low,
         playSound: false,
         enableVibration: false,
       ),
@@ -99,19 +98,19 @@ class MultiChannelNotificationExample {
 
     // Define channel groups
     final channelGroups = [
-      NotificationChannelGroup(
+      NotificationChannelGroupModel(
         channelGroupKey: 'general_group',
         channelGroupName: 'Genel',
       ),
-      NotificationChannelGroup(
+      NotificationChannelGroupModel(
         channelGroupKey: 'marketing_group',
         channelGroupName: 'Kampanyalar',
       ),
-      NotificationChannelGroup(
+      NotificationChannelGroupModel(
         channelGroupKey: 'system_group',
         channelGroupName: 'Sistem',
       ),
-      NotificationChannelGroup(
+      NotificationChannelGroupModel(
         channelGroupKey: 'silent_group',
         channelGroupName: 'Arka Plan',
       ),
@@ -208,24 +207,15 @@ class MultiChannelNotificationExample {
     required BaseNotificationHandler handler,
     String? channelGroupKey,
     Color? defaultColor,
-    NotificationImportance? importance,
+    NotificationImportanceModel? importance,
   }) async {
-    // Yeni kanalı sisteme ekle
-    await AwesomeNotifications().setChannel(
-      NotificationChannel(
-        channelKey: channelKey,
-        channelName: channelName,
-        channelDescription: channelDescription,
-        channelGroupKey: channelGroupKey ?? 'general_group',
-        defaultColor: defaultColor ?? Colors.blue,
-        importance: importance ?? NotificationImportance.High,
-        playSound: true,
-        enableVibration: true,
-      ),
-    );
-
+    // Not: Kanallar initialization sırasında eklenmeli
+    // Bu metod sadece runtime'da yeni handler eklemek için kullanılabilir
+    
     // Handler'ı ekle
     NotificationService.addHandler(channelKey, handler);
+    
+    debugPrint('New handler added for channel: $channelKey');
   }
 }
 
